@@ -9,5 +9,5 @@ export interface GetPokemonByNameRequestResponse {
 }
 
 export async function getPokemonByName(pokemon: string) {
-    return await HttpGateway.get<GetPokemonByNameRequestResponse>(`${process.env.NEXT_PUBLIC_API_URL}/pokemons/${pokemon}`);
+    return await HttpGateway.get<GetPokemonByNameRequestResponse>(`http://localhost:8080/pokemons/${pokemon}`);
 }

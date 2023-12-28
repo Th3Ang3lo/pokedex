@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  pokedex-client:
+    build:
+      context: ./pokedex-frontend
+    ports:
+      - "3000:3000"
+    restart: "no"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:8080
+    networks:
+      - pokedex-network
+
+  pokedex-api:
+    build:
+      context: ./pokedex-api
+    ports:
+      - "8080:8080"
+    restart: "no"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    networks:
+      - pokedex-network
+
+networks:
+  pokedex-network:
+    driver: bridge
